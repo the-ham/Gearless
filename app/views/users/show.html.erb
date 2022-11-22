@@ -1,0 +1,10 @@
+<p><%= @user.id %></p>
+<p><%= @user.first_name %></p>
+<p><%= @user.last_name %></p>
+<p><%= @user.phone_number %></p>
+<p><%= @user.email %></p>
+<p><%= @user.description %></p>
+
+<% if @user != current_user %>
+    <%= link_to  'Start Chat', new_user_message_path(@user) %>
+<% end %>
