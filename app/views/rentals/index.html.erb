@@ -1,0 +1,12 @@
+<h1>ALL Rentals</h1>
+<ul>
+<% @rentals.each do |r| %>
+<li>
+<%= r.start_date %>
+<%= r.end_date %>
+<%= r.price %>
+<%= r.total %>
+<%= r.gear.summary %>
+</li>
+<% end %>
+</ul>

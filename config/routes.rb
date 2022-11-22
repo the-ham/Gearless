@@ -5,5 +5,8 @@ Rails.application.routes.draw do
   resources :users do
     resources :gears, only: [:new, :create]
   end
-  resources :gears, only: :index
+  resources :gears, only: :index do
+    resources :rentals, only: [:new, :create, :edit, :update]
+  end
+  resources :rentals, only: [:destroy, :index]
 end
