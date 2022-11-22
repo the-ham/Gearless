@@ -1,5 +1,11 @@
+<h1>ALL GEARS</h1>
+<ul>
 <% @gears.each do |gear| %>
-  <%= gear.attributes %>
-  <p></p>
-  <br>
+<li>
+<%= gear.gear_type %>
+<%= gear.summary %>
+<%= gear.price %>
+<%= link_to "book this gear", new_gear_rental_path(gear) %>
+</li>
 <% end %>
+</ul>

@@ -1,5 +1,6 @@
 class Gear < ApplicationRecord
   belongs_to :user
+  has_many :rentals
 
   validates :gear_type, presence: true
   validates :summary, presence: true
