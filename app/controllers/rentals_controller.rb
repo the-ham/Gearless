@@ -1,9 +1,9 @@
 class RentalsController < ApplicationController
-  before_action :set_user, only: [:create, :new, :index]
+  before_action :set_user, only: [:create, :new, :index, :update, :edit, :destroy]
   before_action :set_gear, only: [:create, :new]
 
   def index
-    @rentals = Rental.all
+    @rentals = Rental.where(user: @user)
   end
 
   def show
@@ -17,20 +17,37 @@ class RentalsController < ApplicationController
     @rental = Rental.new(rental_params)
     set_rental_info
     if @rental.save
-      redirect_to rentals_path, status: :see_other
+      redirect_to user_rentals_path(@user), status: :see_other
     else
       render :new, status: :unprocessable_entity
     end
   end
 
-  def destroy
-
+  def update
+    @rental = Rental.find(params[:id])
+    if @rental.update(rental_params)
+      redirect_to user_rentals_path(@user), notice: "Rental was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
+
+  def edit
+    @rental = Rental.find(params[:id])
+  end
+
+  def destroy
+    @rental = Rental.find(params[:id])
+    @rental.destroy
+    redirect_to user_rentals_path(@user), notice: "Rental was successfully destroyed."
+  end
+
+
 
   private
 
   def rental_params
-    params.require(:rental).permit(:start_date, :end_date, :price, :total)
+    params.require(:rental).permit(:start_date, :end_date, :price, :total, :status)
   end
 
   def set_user

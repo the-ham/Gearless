@@ -4,9 +4,10 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users do
     resources :gears, only: [:new, :create]
+    resources :rentals, only: [:index]
   end
   resources :gears, only: :index do
-    resources :rentals, only: [:new, :create, :edit, :update]
+    resources :rentals, only: [:new, :create]
   end
-  resources :rentals, only: [:destroy, :index]
+  resources :rentals, only: [:destroy, :edit, :update]
 end

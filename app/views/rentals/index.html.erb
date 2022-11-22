@@ -1,12 +1,32 @@
-<h1>ALL Rentals</h1>
+<h1>My Rentals</h1>
+
 <ul>
-<% @rentals.each do |r| %>
-<li>
-<%= r.start_date %>
-<%= r.end_date %>
-<%= r.price %>
-<%= r.total %>
-<%= r.gear.summary %>
-</li>
-<% end %>
+  <% @rentals.each do |r| %>
+    <li>
+      <%= r.start_date %>
+      <%= r.end_date %>
+      <%= r.price %>
+      <%= r.total %>
+      <%= r.gear.summary %>
+
+      <% if r.status == false %>
+        <%= "Pending Confirmation" %>
+      <% else %>
+        <%=  "Confirmed" %>
+      <% end %>
+
+      <%= link_to edit_rental_path(r), class: 'btn btn-light btn-sm border text-right' do %>
+            <i class="fa-regular fa-pen-to-square"></i>
+          <% end %>
+      <%= link_to rental_path(r),
+        data: {turbo_method: :delete, turbo_confirm: "Are you sure to delete this rental?"},
+        class: 'btn btn-light btn-sm border text-right' do %>
+          <i class="fa-regular fa-trash-can"></i>
+       <% end %>
+
+
+
+    </li>
+
+  <% end %>
 </ul>
