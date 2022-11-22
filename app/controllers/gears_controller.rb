@@ -17,7 +17,7 @@ class GearsController < ApplicationController
     if @gear.save
       redirect_to root_path, status: :see_other
     else
-      render :index, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
