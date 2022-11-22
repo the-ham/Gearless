@@ -1,0 +1,5 @@
+<% @gear.attributes.each do |k,v| %>
+  <%= "#{k}: #{v}" %>
+<% end %>
+
+<%= link_to "Gear owner profile page", user_path(@gear.user) %>
