@@ -37,7 +37,15 @@
 
     .product-details {
       padding: 15px 10px;
+      border: 2px dashed #2e5e553b;
+      height: 250px;
 
+
+      .product-summary {
+        text-overflow: clip;
+        height: 90px;
+        overflow: hidden;
+      }
 
       h4 {
         font-family: $logo-font;
@@ -53,6 +61,7 @@
         line-height: 22px;
         margin-bottom: 10px;
         color: #06270A;
+
       }
     }
 

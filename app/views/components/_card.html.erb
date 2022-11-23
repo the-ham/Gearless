@@ -1,18 +1,20 @@
-	<div class="col">
+	<% gears.each do |gear| %>
+  <div class="col">
     <div class="product-card">
-      <a href="">
+      <a href= <%= gear_path(gear) %> >
       <div class="product-tumb">
         <img src="https://images.unsplash.com/photo-1628087235616-4e146afcd061?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=776&q=80" alt="">
       </div>
       <div class="product-details">
-        <span class="product-catagory">Sleeping Gear</span>
-        <h4>Wanderer Tent</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
-        <p>Capacity: 2</p>
+        <%# <span class="product-catagory">Tents</span> %>
+        <h4><%= gear.gear_type %></h4>
+        <p class="product-summary"><%= gear.summary %></p>
+        <p>Capacity: <%= gear.total_occupancy %></p>
         <div class="product-bottom-details">
-          <div class="product-price">$90.00 <small> per night</small></div>
+          <div class="product-price">$<%= gear.price.round %> <small> per night</small></div>
         </div>
       </div>
     </a>
   </div>
 </div>
+<% end %>

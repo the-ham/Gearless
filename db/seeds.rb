@@ -35,10 +35,11 @@ Gear.create!(user_id: george.id,
                    phone_number: Faker::PhoneNumber.phone_number,
                    description: Faker::Lorem.sentence)
   y = Gear.create!(user_id: x.id,
-                   gear_type: ["Tent", "Cookery", "Hiking gear", "Survival gear"].sample,
-                   summary: Faker::Mountain.name,
+                   gear_type: ["Sleeping Gear", "Cookery", "Hiking gear", "Survival gear"].sample,
+                   summary: Faker::Movies::VForVendetta.speech,
                    address: Faker::Address.street_address,
-                   price: rand(10.0...200.0))
+                   total_occupancy: rand(1..10),
+                   price: rand(10.0..200.0).round)
   Rental.create!(price: y.price,
                  total: y.price * 3,
                  start_date: Faker::Date.between(from: Date.today + 1, to: 3.days.from_now),
