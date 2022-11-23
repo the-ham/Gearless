@@ -19,13 +19,19 @@
       data: { turbo_method: :patch, turbo_confirm: "Are you sure you want to cancel this rental?" } do %>
         <i class="fa-regular fa-trash-can"></i>
       <% end %>
+
+    <%= link_to new_user_rental_review_path(user_id: r.user_id, rental_id: r.id),
+    class: 'btn btn-light btn-sm border text-right' do %>
+      <i class="fa-regular fa-comment"></i>
+      <% end %>
+
     <%= link_to "Gear owner profile page", user_path(r.gear.user) %>
     <% end %>
-
   </li>
-
   <% end %>
+</ul>
 
+<ul>
   <p>Cancelled rentals</p>
   <% @rentals.each do |r| %>
     <% if r.status == 'cancelled' %>
@@ -38,9 +44,4 @@
         <%= r.status %>
     <% end %>
     <% end %>
-
-
-
-    <%# <%= link_to 'cancel', rental_path(@rental, rental: { status: 'cancelled' }), class: 'btn btn-primary shrink-0 mr-4', data: { turbo_method: :patch } %>
-     <%# # data: {turbo_method: :delete, turbo_confirm: "Are you sure to delete this rental?"}, %>
 </ul>
