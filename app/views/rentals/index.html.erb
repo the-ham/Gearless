@@ -19,6 +19,7 @@
       data: { turbo_method: :patch, turbo_confirm: "Are you sure you want to cancel this rental?" } do %>
         <i class="fa-regular fa-trash-can"></i>
       <% end %>
+    <%= link_to "Gear owner profile page", user_path(r.gear.user) %>
     <% end %>
 
   </li>

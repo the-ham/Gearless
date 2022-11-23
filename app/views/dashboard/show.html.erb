@@ -1,4 +1,7 @@
 <div class="container">
+  <h1>Rentals I have hosted</h1>
+  <%= link_to "View rentals I have hosted", host_show_path(current_user) %> <br>
+  --------------------------
   <h1>Your Pending/Active Rentals</h1>
   --------------------------
   <% @rentals.each do |rental| %>
