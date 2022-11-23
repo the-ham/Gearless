@@ -8,6 +8,9 @@ class MessagesController < ApplicationController
     @messages = Message.select do |message|
       parties.include?(message.sender_id) && parties.include?(message.recipient_id)
     end
+
+    @user = User.find(params[:user_id])
+    @message = Message.new
   end
 
   # GET /messages/1 or /messages/1.json
