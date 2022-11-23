@@ -64,5 +64,4 @@ class RentalsController < ApplicationController
     @rental.price = @gear.price
     @rental.total = @rental.price * (@rental.end_date - @rental.start_date)
   end
-
 end
