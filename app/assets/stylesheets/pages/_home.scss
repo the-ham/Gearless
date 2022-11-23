@@ -1,1 +1,85 @@
 // Specific CSS for your home-page
+.full-page {
+  height: 100%;
+  margin-bottom: -2px;
+
+  .hero-container {
+    inset: 0px;
+    height: 100vh;
+    display: flex;
+    z-index: -100;
+    overflow: hidden;
+    position: absolute;
+    flex-direction: column;
+
+    .hero-image {
+      object-position: unset;
+      height: 100vh;
+      object-fit: cover;
+    }
+  }
+
+  .hero-text-container {
+    height: 100vh;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 100px;
+    margin-bottom: -100px;
+
+    .button {
+      margin-top: 50px;
+      width: fit-content;
+      border: 2px solid #F4F3D8;
+      padding: 10px 40px;
+      font-family: $body-font;
+      text-transform: uppercase;
+      color: rgb(244,243,216);
+      text-shadow: 1px 1px 2px black;
+      font-size: 23px;
+      text-decoration: none;
+      transition: ease-in-out 0.2s;
+    }
+
+    .button:hover {
+      background-color: #06270A;
+      border: 2px dashed #F4F3D8;
+    }
+
+    .hero-text {
+      font-family: $body-font;
+      text-transform: uppercase;
+      font-size: 60px;
+      text-decoration: none;
+      color: rgb(244,243,216);
+      text-shadow: 1px 1px 1px black;
+    }
+
+    .secondary-text {
+      font-family: $body-font;
+      text-transform: uppercase;
+      font-size: 30px;
+      text-decoration: none;
+      color: rgb(244,243,216);
+      text-shadow: 1px 1px 1px black;;
+    }
+  }
+}
+
+.gear-container {
+  margin-top: -50px;
+
+  .text-container {
+    text-align: center;
+  }
+
+  .body-text {
+    font-family: $logo-font;
+    text-transform: uppercase;
+    font-size: 50px;
+    color: #06270A;
+
+  }
+}

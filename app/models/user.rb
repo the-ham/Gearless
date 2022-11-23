@@ -8,4 +8,5 @@ class User < ApplicationRecord
   has_many :rentals, dependent: :destroy
 
   has_one_attached :avatar
+  has_many :reviews, through: :rentals, dependent: :destroy
 end

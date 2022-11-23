@@ -1,0 +1,96 @@
+.product-card {
+    width: 400px;
+    box-shadow: 0 2px 7px #dfdfdf;
+    background: #F4F4F4;
+    padding: 0;
+    margin-bottom: 50px;
+
+    a {
+      text-decoration: none;
+    }
+
+    .product-tumb {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 150px;
+      padding: 50px;
+      background: #f0f0f0;
+      overflow: hidden;
+
+      img {
+        object-fit: cover;
+        width: 400px;
+        transition: ease-in 0.1s;
+      }
+    }
+
+    .product-catagory {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #2E5E55;
+      margin-bottom: 10px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .product-details {
+      padding: 15px 10px;
+      border: 2px dashed #2e5e553b;
+      height: 265px;
+
+
+      .product-summary {
+        text-overflow: clip;
+        height: 90px;
+        overflow: hidden;
+      }
+
+      h4 {
+        font-family: $logo-font;
+        display: block;
+        font-size: 30px;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+        color: #06270A;
+      }
+
+      p {
+        font-size: 14px;
+        line-height: 22px;
+        margin-bottom: 10px;
+        color: #06270A;
+      }
+    }
+
+
+    .product-bottom-details {
+      overflow: hidden;
+
+      div {
+        float: left;
+        width: 50%;
+      }
+    }
+
+    .product-price {
+      font-size: 24px;
+      color: #06270A;
+      font-weight: 500;
+
+      small {
+        font-size: 80%;
+        font-weight: 200;
+        display: inline-block;
+        margin-right: 5px;
+      }
+    }
+
+    a:hover {
+      img {
+        transform: scale(1.05);
+      }
+
+    }
+}
