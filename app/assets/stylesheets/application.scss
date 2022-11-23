@@ -106,5 +106,23 @@ li {
     align-items: center;
     flex-direction: column;
     justify-content: center;
+
+    .hero-text {
+      font-family: $body-font;
+      text-transform: uppercase;
+      font-size: 60px;
+      text-decoration: none;
+      color: white;
+      text-shadow: 1px 1px 1px #949494;;
+    }
+
+    .secondary-text {
+      font-family: $body-font;
+      text-transform: uppercase;
+      font-size: 30px;
+      text-decoration: none;
+      color: white;
+      text-shadow: 1px 1px 1px #949494;;
+    }
   }
 }
