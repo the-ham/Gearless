@@ -2,11 +2,14 @@ class RentalsController < ApplicationController
   before_action :set_user, only: [:create, :new, :index, :update, :edit, :destroy]
   before_action :set_gear, only: [:create, :new]
 
+  # index view of all rentals where i am the renter
   def index
     @rentals = Rental.where(user: @user)
   end
 
-  def show
+  # index view of all rentals made by other renters where i am the host
+  def host_show
+    @rentals = Rental.select { |rental| rental.gear.user == current_user }
   end
 
   def new
@@ -26,7 +29,11 @@ class RentalsController < ApplicationController
   def update
     @rental = Rental.find(params[:id])
     if @rental.update(rental_params)
-      redirect_to user_rentals_path(@user), notice: "Rental was successfully updated."
+      if current_user.id == @rental.user_id
+        redirect_to user_rentals_path(@user)
+      else
+        redirect_to host_show_path(@user)
+      end
     else
       render :edit, status: :unprocessable_entity
     end
@@ -41,8 +48,6 @@ class RentalsController < ApplicationController
     @rental.destroy
     redirect_to user_rentals_path(@user), notice: "Rental was successfully destroyed."
   end
-
-
 
   private
 
