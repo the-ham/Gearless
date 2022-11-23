@@ -6,10 +6,14 @@
 // External libraries
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome";
-
+@import "star-rating.js/dist/star-rating.css";
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+.profile-pic {
+  border-radius: 50%;
+}
 
 .messages {
   height: auto;
@@ -73,4 +77,8 @@
   .messages ul li p {
     max-width: 300px;
   }
+}
+
+li {
+  list-style: none;
 }

@@ -20,10 +20,7 @@
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "description" }%>
-    <%= f.input :profile_img,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "profile_img" }%>
+    <%= f.input :avatar, as: :file %>
     <%= f.input :email,
                 required: true,
                 autofocus: true,

@@ -8,30 +8,28 @@
 
 
 <%# Here is all the reviews by renters%>
-<h2>Reviews</h2>
-<ul class="list-group list-group-flush">
-        <% @gear.reviews.each do |review|
-          <li class="list-group-item">
-          <div class="review-rating">
-          <% review.rating.to_i.times do %>
-          <label class="rating-color">★</label>
-          <% end %>
-          <% review.blank_stars.times do %>
-          <label>☆</label>
-          <% end %>
-          <%= review.message %>
-          </div>
-          <div class="row justify-content-between">
-            <div class="col-10">
-              <%= review.content %>
-            </div>
-            <div class="col-2">
-              <%= link_to review_path(review), data: {turbo_method: :delete, turbo_confirm: "Are you sure to delete this review?"},
-                      class: 'btn btn-light btn-sm border text-right' do %>
-                          <i class="fa-regular fa-trash-can"></i>
-                          <% end %>
-            </div>
-          </div>
-          </li>
+<div class="col-4" id="allreview">
+  <h2>Reviews</h2>
+  <ul class="list-group list-group-flush">
+      <% @gear.reviews.each do |review| %>
+        <li class="list-group-item">
+        <%= User.find(review.user_id).first_name %>
+        <%= User.find(review.user_id).last_name %>
+        <div class="review-rating">
+        <% review.rating.to_i.times do %>
+        <label class="rating-color">★</label>
         <% end %>
-      </ul> %>
+        <% review.blank_stars.times do %>
+        <label>☆</label>
+        <% end %>
+        <%= review.message %>
+        </div>
+        <div class="row justify-content-between">
+          <div class="col-10">
+            <%= review.content %>
+          </div>
+        </div>
+        </li>
+      <% end %>
+    </ul>
+</div>

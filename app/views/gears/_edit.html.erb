@@ -1,4 +1,4 @@
-<%= simple_form_for [@user, @gear] do |form| %>
+<%= simple_form_for [@gear] do |form| %>
   <% if gear.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
       <h2><%= pluralize(gear.errors.count, "error") %> prohibited this gear from being saved:</h2>
