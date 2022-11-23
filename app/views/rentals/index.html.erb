@@ -1,32 +1,78 @@
-<h1>My Rentals</h1>
+<h2>My Rentals</h2>
 
 <ul>
-<p>Rentals</p>
-  <% @rentals.each do |r| %>
-    <% if r.status != 'cancelled' %>
-      <li>
-        <%= r.start_date %>
-        <%= r.end_date %>
-        <%= r.price %>
-        <%= r.total %>
-        <%= r.gear.summary %>
-        <%= r.status %>
-    <%= link_to edit_rental_path(r), class: 'btn btn-light btn-sm border text-right' do %>
-          <i class="fa-regular fa-pen-to-square"></i>
-        <% end %>
-    <%= link_to rental_path(r, rental: { status: 'cancelled' }),
-      class: 'btn btn-light btn-sm border text-right',
-      data: { turbo_method: :patch, turbo_confirm: "Are you sure you want to cancel this rental?" } do %>
-        <i class="fa-regular fa-trash-can"></i>
+  <h5>Rentals</h5>
+    <% @rentals.each do |r| %>
+      <% if r.status == 'pending' %>
+        <li>
+          <%= r.start_date %>
+          <%= r.end_date %>
+          <%= r.price %>
+          <%= r.total %>
+          <%= r.gear.summary %>
+          <%= r.status %>
+          <%= link_to "Gear owner profile page", user_path(r.gear.user) %>
+
+          <%= link_to edit_rental_path(r), class: 'btn btn-light btn-sm border text-right' do %>
+              <i class="fa-regular fa-pen-to-square"></i>
+          <% end %>
+
+          <%= link_to rental_path(r, rental: { status: 'cancelled' }),
+          class: 'btn btn-light btn-sm border text-right',
+          data: { turbo_method: :patch, turbo_confirm: "Are you sure you want to cancel this rental?" } do %>
+            <i class="fa-regular fa-trash-can"></i>
+          <% end %>
+        </li>
       <% end %>
-    <%= link_to "Gear owner profile page", user_path(r.gear.user) %>
     <% end %>
+</ul>
 
-  </li>
+<ul>
+  <h5>Confirmed Rentals</h5>
+    <% @rentals.each do |r| %>
+      <% if r.status == 'confirmed' %>
+        <li>
+          <%= r.start_date %>
+          <%= r.end_date %>
+          <%= r.price %>
+          <%= r.total %>
+          <%= r.gear.summary %>
+          <%= r.status %>
+          <%= link_to "Gear owner profile page", user_path(r.gear.user) %>
 
-  <% end %>
+          <%= link_to rental_path(r, rental: { status: 'cancelled' }),
+          class: 'btn btn-light btn-sm border text-right',
+          data: { turbo_method: :patch, turbo_confirm: "Are you sure you want to cancel this rental?" } do %>
+            <i class="fa-regular fa-trash-can"></i>
+          <% end %>
+        </li>
+      <% end %>
+    <% end %>
+</ul>
 
-  <p>Cancelled rentals</p>
+<ul>
+  <h5>Completed Rentals</h5>
+    <% @rentals.each do |r| %>
+      <% if r.status == 'completed' %>
+        <li>
+          <%= r.start_date %>
+          <%= r.end_date %>
+          <%= r.price %>
+          <%= r.total %>
+          <%= r.gear.summary %>
+          <%= r.status %>
+          <%= link_to "Gear owner profile page", user_path(r.gear.user) %>
+          <%= link_to new_user_rental_review_path(user_id: r.user_id, rental_id: r.id),
+              class: 'btn btn-light btn-sm border text-right' do %>
+                <i class="fa-regular fa-comment"></i>
+              <% end %>
+        </li>
+      <% end %>
+    <% end %>
+</ul>
+
+<ul>
+  <h5>Cancelled rentals</h5>
   <% @rentals.each do |r| %>
     <% if r.status == 'cancelled' %>
       <li>
@@ -38,9 +84,4 @@
         <%= r.status %>
     <% end %>
     <% end %>
-
-
-
-    <%# <%= link_to 'cancel', rental_path(@rental, rental: { status: 'cancelled' }), class: 'btn btn-primary shrink-0 mr-4', data: { turbo_method: :patch } %>
-     <%# # data: {turbo_method: :delete, turbo_confirm: "Are you sure to delete this rental?"}, %>
 </ul>
