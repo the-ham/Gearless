@@ -32,7 +32,7 @@
     .button {
       margin-top: 50px;
       width: fit-content;
-      border: 1px solid #F4F3D8;
+      border: 2px solid #F4F3D8;
       padding: 10px 40px;
       font-family: $body-font;
       text-transform: uppercase;
@@ -45,7 +45,7 @@
 
     .button:hover {
       background-color: #06270A;
-      border: 1px dashed #F4F3D8;
+      border: 2px dashed #F4F3D8;
     }
 
     .hero-text {
