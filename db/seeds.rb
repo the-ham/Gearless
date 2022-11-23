@@ -19,7 +19,7 @@ Gear.create!(user_id: sam.id,
   address: Faker::Address.street_address,
   price: rand(10.0...200.0))
 
-george = User.create!(first_name: "Sam", last_name: "Admin", email: "george@gmail.com", phone_number: 123456, description: "Admin account", password: "password")
+george = User.create!(first_name: "George", last_name: "Admin", email: "george@gmail.com", phone_number: 123456, description: "Admin account", password: "password")
 Gear.create!(user_id: george.id,
   gear_type: "Cooking set",
   summary: "Great gear",
