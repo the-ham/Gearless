@@ -1,0 +1,23 @@
+<h1>All Gears for Rent</h1>
+<%= link_to new_user_gear_path(@user) do %>
+            <p>Create New Gear</p>
+          <% end %>
+<br>
+  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  <% @gears.each do |gear| %>
+      <li>
+        Gear Type:<%= gear.gear_type %> <br>
+        Summary:<%= gear.summary %> <br>
+        $<%= gear.price %> <br>
+        -------------------------- <br>
+        <%= link_to edit_gear_path(gear), class: 'btn btn-light btn-sm border text-right' do %>
+            <i class="fa-regular fa-pen-to-square"></i>
+          <% end %>
+        <%= link_to gear_path(gear),
+        data: {turbo_method: :delete, turbo_confirm: "Are you sure to delete this gear?"},
+        class: 'btn btn-light btn-sm border text-right' do %>
+          <i class="fa-regular fa-trash-can"></i>
+        <% end %> <br>
+        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX <br>
+      </li>
+  <% end %>

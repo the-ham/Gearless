@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :rentals, only: [:index] do
       resources :reviews, only: %i[new create]
     end
+    get "my_gear", to: "dashboard#my_gear", as: :my_gear
   end
   resources :reviews, only: [:destroy, :edit, :update]
 
@@ -19,5 +20,6 @@ Rails.application.routes.draw do
     resources :rentals, only: [:new, :create]
   end
   resources :rentals, only: [:destroy, :edit, :update]
-
+  resources :gears, only: [:destroy, :edit, :update]
+  get "dashboard", to: "dashboard#show", as: :dashboard
 end

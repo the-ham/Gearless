@@ -8,6 +8,9 @@ class MessagesController < ApplicationController
     @messages = Message.select do |message|
       parties.include?(message.sender_id) && parties.include?(message.recipient_id)
     end
+
+    @user = User.find(params[:user_id])
+    @message = Message.new
   end
 
   # GET /messages/1 or /messages/1.json
@@ -33,7 +36,7 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @message.save
-        format.html { redirect_to user_messages_path(@user), notice: "Message was successfully created." }
+        # format.html { redirect_to user_messages_path(@user), notice: "Message was successfully created." }
         format.json { render :index, status: :created, location: @message }
       else
         format.html { render :new, status: :unprocessable_entity }
