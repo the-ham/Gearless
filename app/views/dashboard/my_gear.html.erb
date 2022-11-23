@@ -4,6 +4,11 @@
           <% end %>
 <br>
   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  <div style="width: 200px; height: 200px;"
+       data-controller="map"
+       data-map-markers-value="<%= @markers.to_json %>"
+       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
   <% @gears.each do |gear| %>
       <li>
         Gear Type:<%= gear.gear_type %> <br>
