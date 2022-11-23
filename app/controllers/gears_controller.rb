@@ -19,7 +19,7 @@ class GearsController < ApplicationController
     @gear = Gear.new(gear_params)
     @gear.user = @user
     if @gear.save
-      redirect_to root_path, status: :see_other
+      redirect_to dashboard_path, status: :see_other
     else
       render :new, status: :unprocessable_entity
     end
