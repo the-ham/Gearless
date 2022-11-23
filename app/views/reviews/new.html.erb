@@ -1,0 +1,9 @@
+    <div class="col-4 p-4" id="newreview">
+      <h5>Add your review</h5>
+
+      <%= simple_form_for [@rental, @review] do |f| %>
+      <%= f.input :comment %>
+      <%= f.input :rating, as: :select, collection: (1..5), required: true, prompt: "What's your rating", input_html: { data: { controller: "star-rating" } } %>
+      <%= f.submit "Submit", class: "btn btn-success" %>
+      <% end %>
+    </div>
