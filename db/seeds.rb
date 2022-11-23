@@ -12,6 +12,20 @@ User.destroy_all #syntax for destroy all
 
 # Admin acc
 User.create!(first_name: "Admin", last_name: "Admin", email: "admin@gmail.com", phone_number: 123456, description: "Admin account", password: "password")
+sam = User.create!(first_name: "Sam", last_name: "Admin", email: "sam@gmail.com", phone_number: 123456, description: "Admin account", password: "password")
+Gear.create!(user_id: sam.id,
+  gear_type: "Tent",
+  summary: "Great Tent",
+  address: Faker::Address.street_address,
+  price: rand(10.0...200.0))
+
+george = User.create!(first_name: "Sam", last_name: "Admin", email: "george@gmail.com", phone_number: 123456, description: "Admin account", password: "password")
+Gear.create!(user_id: george.id,
+  gear_type: "Cooking set",
+  summary: "Great gear",
+  address: Faker::Address.street_address,
+  price: rand(10.0...200.0))
+
 
 10.times do
   x = User.create!(password: "password",

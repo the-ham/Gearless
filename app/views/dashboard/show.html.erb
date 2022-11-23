@@ -1,4 +1,21 @@
 <div class="container">
+  <h1>All Gears for Rent</h1><br>
+  --------------------------
+  <% @gears.each do |gear| %>
+    <% if gear.user != current_user %>
+      <li>
+        Gear Type:<%= gear.gear_type %> <br>
+        Summary:<%= gear.summary %> <br>
+        Owner:<%= gear.user.first_name %> <br>
+        $<%= gear.price %> <br>
+        <%= link_to "See More", gear_path(gear) %> <br>
+        --------------------------
+      </li>
+    <% end %>
+  <% end %>
+
+  <br>
+  --------------------------
   <h1>Rentals I have hosted</h1>
   <%= link_to "View rentals I have hosted", host_show_path(current_user) %> <br>
   --------------------------
@@ -39,23 +56,7 @@
   <%= link_to "View all rentals", user_rentals_path(current_user) %>
   <br>
   --------------------------
-  <h1>All Gears for Rent</h1><br>
-  --------------------------
-  <% @gears.each do |gear| %>
-    <% if gear.user != current_user %>
-      <li>
-        Gear Type:<%= gear.gear_type %> <br>
-        Summary:<%= gear.summary %> <br>
-        Owner:<%= gear.user.first_name %> <br>
-        $<%= gear.price %> <br>
-        <%= link_to "See More", gear_path(gear) %> <br>
-        --------------------------
-      </li>
-    <% end %>
-  <% end %>
 
-  <br>
-  --------------------------
   <br>
 
 
