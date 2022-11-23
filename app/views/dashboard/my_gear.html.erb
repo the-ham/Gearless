@@ -9,6 +9,10 @@
         Gear Type:<%= gear.gear_type %> <br>
         Summary:<%= gear.summary %> <br>
         $<%= gear.price %> <br>
+        <br>
+        <% gear.photos.each do |photo| %>
+          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+        <% end %> <br>
         -------------------------- <br>
         <%= link_to edit_gear_path(gear), class: 'btn btn-light btn-sm border text-right' do %>
             <i class="fa-regular fa-pen-to-square"></i>
