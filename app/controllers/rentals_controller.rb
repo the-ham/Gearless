@@ -29,7 +29,11 @@ class RentalsController < ApplicationController
   def update
     @rental = Rental.find(params[:id])
     if @rental.update(rental_params)
-      redirect_to user_rentals_path(@user), notice: "Rental was successfully updated."
+      if current_user.id == @rental.user_id
+        redirect_to user_rentals_path(@user)
+      else
+        redirect_to host_show_path(@user)
+      end
     else
       render :edit, status: :unprocessable_entity
     end

@@ -11,6 +11,7 @@
   <% end %>
     <%= form.input :start_date, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
     <%= form.input :end_date, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-    <%= form.input :status, as: :radio_buttons, label: 'Cancel reservation?' %>
     <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
 <% end %>
+
+<%# <%= link_to 'cancel', rental_path(@rental, rental: { status: 'cancelled' }), class: 'btn btn-primary shrink-0 mr-4', data: { turbo_method: :patch } %>
