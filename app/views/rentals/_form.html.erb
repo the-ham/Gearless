@@ -1,7 +1,7 @@
 <%= simple_form_for [@gear, @rental] do |form| %>
   <% if rental.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(rental.errors.count, "error") %> prohibited this rental from being saved:</h2>
+      <h2><%= plura lize(rental.errors.count, "error") %> prohibited this rental from being saved:</h2>
       <ul>
         <% rental.errors.attribute_names.each do |error| %>
           <li><%= error %></li>

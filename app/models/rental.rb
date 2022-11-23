@@ -11,5 +11,4 @@ class Rental < ApplicationRecord
       errors.add("Start from a date after today!")
     end
   end
-
 end
