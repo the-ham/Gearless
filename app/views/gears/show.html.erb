@@ -13,6 +13,8 @@
   <ul class="list-group list-group-flush">
       <% @gear.reviews.each do |review| %>
         <li class="list-group-item">
+        <%= User.find(review.user_id).first_name %>
+        <%= User.find(review.user_id).last_name %>
         <div class="review-rating">
         <% review.rating.to_i.times do %>
         <label class="rating-color">★</label>
