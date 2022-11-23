@@ -1,5 +1,12 @@
 <% @gear.attributes.each do |k,v| %>
   <%= "#{k}: #{v}" %>
 <% end %>
+<p>
+<%= link_to "book this gear", new_gear_rental_path(@gear) %>
+| <%= link_to "Gear owner profile page", user_path(@gear.user) %>
+</p>
 
-<%= link_to "Gear owner profile page", user_path(@gear.user) %>
+
+<%# Here is all the reviews by %>
+
+<%# <%= @gear.reviews  %> %>

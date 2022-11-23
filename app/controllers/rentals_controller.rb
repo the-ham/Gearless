@@ -2,11 +2,14 @@ class RentalsController < ApplicationController
   before_action :set_user, only: [:create, :new, :index, :update, :edit, :destroy]
   before_action :set_gear, only: [:create, :new]
 
+  # index view of all rentals where i am the renter
   def index
     @rentals = Rental.where(user: @user)
   end
 
-  def show
+  # index view of all rentals made by other renters where i am the host
+  def host_show
+    @rentals = Rental.select { |rental| rental.gear.user == current_user }
   end
 
   def new
@@ -41,8 +44,6 @@ class RentalsController < ApplicationController
     @rental.destroy
     redirect_to user_rentals_path(@user), notice: "Rental was successfully destroyed."
   end
-
-
 
   private
 

@@ -1,0 +1,10 @@
+<h1>Reservations</h1>
+
+<ul>
+  <% @rentals.each do |rental| %>
+    <li><%= " Booking by #{rental.user.first_name.capitalize} #{rental.user.last_name.capitalize} for #{rental.gear.gear_type}, #{rental.gear.summary}.\n
+        Arrival: #{rental.start_date}, Return: #{rental.end_date}. Status: #{rental.status}" %>
+    </li>
+    <br>
+  <% end %>
+</ul>

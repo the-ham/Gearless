@@ -2,6 +2,9 @@
 <ul>
 <% @gears.each do |gear| %>
 <li>
+<a href="<%= gear_path(gear.id) %>">
+        see more
+        </a>
 <%= gear.gear_type %>
 <%= gear.summary %>
 <%= gear.price %>

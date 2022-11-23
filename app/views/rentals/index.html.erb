@@ -8,12 +8,9 @@
       <%= r.price %>
       <%= r.total %>
       <%= r.gear.summary %>
+      <%= r.status %>
 
-      <% if r.status == false %>
-        <%= "Pending Confirmation" %>
-      <% else %>
-        <%=  "Confirmed" %>
-      <% end %>
+
 
       <%= link_to edit_rental_path(r), class: 'btn btn-light btn-sm border text-right' do %>
             <i class="fa-regular fa-pen-to-square"></i>
@@ -23,9 +20,6 @@
         class: 'btn btn-light btn-sm border text-right' do %>
           <i class="fa-regular fa-trash-can"></i>
        <% end %>
-
-
-
     </li>
 
   <% end %>

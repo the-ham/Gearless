@@ -2,6 +2,8 @@ class Rental < ApplicationRecord
   belongs_to :user
   belongs_to :gear
 
+  # validates :status, inclusion: { in: ['confirmed', 'pending', 'completed', 'cancelled'] }
+  validates :start_date, :end_date, presence: true
   validate :validate_rent_time
 
   def validate_rent_time
