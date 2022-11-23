@@ -29,7 +29,7 @@ User.create!(first_name: "Admin", last_name: "Admin", email: "admin@gmail.com", 
                  total: y.price * 3,
                  start_date: Faker::Date.between(from: Date.today + 1, to: 3.days.from_now),
                  end_date: Faker::Date.between(from: 4.days.from_now, to: 20.days.from_now),
-                 status: [true, false].sample,
+                 status: "pending",
                  user_id: x.id,
                  gear_id: y.id)
 end

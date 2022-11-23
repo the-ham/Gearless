@@ -42,8 +42,6 @@ class RentalsController < ApplicationController
     redirect_to user_rentals_path(@user), notice: "Rental was successfully destroyed."
   end
 
-
-
   private
 
   def rental_params
@@ -64,5 +62,4 @@ class RentalsController < ApplicationController
     @rental.price = @gear.price
     @rental.total = @rental.price * (@rental.end_date - @rental.start_date)
   end
-
 end
