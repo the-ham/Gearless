@@ -11,6 +11,10 @@
 @import "components/index";
 @import "pages/index";
 
+.profile-pic {
+  border-radius: 50%;
+}
+
 .messages {
   height: auto;
   min-height: calc(100% - 93px);
