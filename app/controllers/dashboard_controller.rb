@@ -8,6 +8,13 @@ class DashboardController < ApplicationController
 
   def my_gear
     @gears = Gear.where(user: @user)
+
+    @markers = @gears.geocoded.map do |gear|
+      {
+        lat: gear.latitude,
+        lng: gear.longitude
+      }
+    end
   end
 
   private
