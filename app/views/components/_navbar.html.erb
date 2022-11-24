@@ -21,7 +21,7 @@
           <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
             <li><a class="dropdown-item" href= <%= new_user_gear_path(current_user) %>> Lend some gear</a></li>
             <li><a class="dropdown-item" href= <%= root_path %>>Borrow some gear</a></li>
-            <li><a class="dropdown-item" href= <%= user_my_gear_path(current_user) %>>Your listed gear</a></li>
+            <li><a class="dropdown-item" href= <%= user_my_gear_path(current_user) %>>Your Dashboard</a></li>
             <div class="dropdown-divider"></div>
             <li><a class="dropdown-item" href= "<%= destroy_user_session_path %>" data-turbo-method="delete">Log Out</a></li>
           </ul>

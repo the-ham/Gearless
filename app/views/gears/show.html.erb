@@ -1,35 +1,70 @@
-<% @gear.attributes.each do |k,v| %>
-  <%= "#{k}: #{v}" %>
-<% end %>
-<p>
-<%= link_to "book this gear", new_gear_rental_path(@gear) %>
-| <%= link_to "Gear owner profile page", user_path(@gear.user) %>
-</p>
-
-
-<%# Here is all the reviews by renters%>
-<div class="col-4" id="allreview">
-  <h2>Reviews</h2>
-  <ul class="list-group list-group-flush">
-      <% @gear.reviews.each do |review| %>
-        <li class="list-group-item">
-        <%= User.find(review.user_id).first_name %>
-        <%= User.find(review.user_id).last_name %>
-        <div class="review-rating">
-        <% review.rating.to_i.times do %>
-        <label class="rating-color">★</label>
-        <% end %>
-        <% review.blank_stars.times do %>
-        <label>☆</label>
-        <% end %>
-        <%= review.message %>
+<div class="container">
+  <div class="row justify-content-between flex-wrap">
+    <div class="col-4 pt-5">
+      <div>
+        <img class="transform rotate-45 opacity-90 shadow" style="width: 400px;" src="https://hireafoodtruck.com.au/wp-content/uploads/2019/12/bbq-001.jpg"/>
+      </div>
+      <div style="height: 100px;"></div>
+      <div>
+        <div class="col-4" id="allreview">
+          <h2>Reviews</h2>
+          <ul class="list-group list-group-flush">
+              <% @gear.reviews.each do |review| %>
+                <li class="list-group-item">
+                <%= User.find(review.user_id).first_name %>
+                <%= User.find(review.user_id).last_name %>
+                <div class="review-rating">
+                <% review.rating.to_i.times do %>
+                <label class="rating-color">★</label>
+                <% end %>
+                <% review.blank_stars.times do %>
+                <label>☆</label>
+                <% end %>
+                <%= review.message %>
+                </div>
+                <div class="row justify-content-between">
+                  <div class="col-10">
+                    <%= review.content %>
+                  </div>
+                </div>
+                </li>
+              <% end %>
+            </ul>
         </div>
-        <div class="row justify-content-between">
-          <div class="col-10">
-            <%= review.content %>
-          </div>
+      </div>
+    </div>
+    <div class="col-6" >
+      <div style="width: 432px; height: 819px; display: inline-flex; flex-direction: column; justify-content: flex-start;">
+        <div>
+          <p style="font-size: 15px; font-weight: 500; line-height: 100%; color: rgba(34, 36, 37, 1);"><%= @gear.gear_type %></p>
+          <p style="font-size: 44px; font-weight: 500; line-height: 100%; color: rgba(34, 36, 37, 1);"><%= @gear.gear_name %></p>
+          <p style="font-size: 14px; letter-spacing: 0.80px; line-height: 100%; color: rgba(34, 36, 37, 0.85);">by <%= @gear.user.first_name %> <%= @gear.user.last_name %> <i class="fa-regular fa-envelope"></i></p>
         </div>
-        </li>
-      <% end %>
-    </ul>
+
+        <div>
+          <i style="font-size: 20px; letter-spacing: 1px; line-height: 100%; color: black;">$<%= @gear.price %> </i><small>per night</small>
+        </div>
+        <div style="height: 16px;"></div>
+        <div>
+        <h4 style="font-size: 20px; color: rgba(34, 36, 37, 1);">Description:</h4>
+        <p style="font-size: 12px; letter-spacing: 0.48px; color: rgba(34, 36, 37, 0.85);"><%= @gear.summary %> </p>
+        </div>
+        <hr>
+        <div style="width: 432px; height: 89px; display: flex; flex-direction: column;">
+          <p style="font-size: 20px; line-height: 100%; ">Pick-up date<br/></p>
+          <p style="width: 185px; height: 32px; font-size: 20px; line-height: 100%; color: black;">Return date<br/></p>
+
+        </div>
+
+        <p style="font-size: 20px; letter-spacing: 1px; line-height: 100%; color: black;">Total Price: </p>
+
+        <div class="align-items-center text-center p-2" style="width: 429px; height: 50px; background-color: rgba(35, 37, 38, 1); border-radius: 6px; position: relative;">
+          <p style="font-size: 20px; color: white; margin-bottom: 0;">Book this gear</p>
+        </div>
+
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
