@@ -3,6 +3,7 @@
     box-shadow: 0 2px 7px #d9d9d9;
     background: $primary-color-light;
     padding: 0;
+    margin: 0 auto;
     margin-bottom: 50px;
 
     a {
@@ -17,11 +18,29 @@
       padding: 50px;
       background: $primary-color-light;
       overflow: hidden;
+      position: relative;
+
 
       img {
         object-fit: cover;
         width: 400px;
-        transition: ease-in 0.1s;
+        transition: ease-in-out 0.2s;
+        position: absolute;
+      }
+
+      p {
+        margin-top: 50px;
+        width: fit-content;
+        border: 2px solid $primary-colors-dark;
+        padding: 10px 40px;
+        font-family: $body-font;
+        color: $primary-colors-dark;
+        font-size: 23px;
+        text-decoration: none;
+        background-color: $primary-color-light;
+        z-index: 2;
+        opacity: 0;
+        transition: ease-in-out 0.2s;
       }
     }
 
@@ -91,7 +110,11 @@
     a:hover {
       img {
         transform: scale(1.05);
+        filter: grayscale(90%);
       }
 
+      p {
+        opacity: 1;
+      }
     }
 }
