@@ -7,6 +7,8 @@ class DashboardController < ApplicationController
   end
 
   def my_gear
+    @rentals_by_me = Rental.where(user: @user)
+    @rentals_hosted_by_me = Rental.select { |rental| rental.gear.user == current_user }
     @gears = Gear.where(user: @user)
 
     @markers = @gears.geocoded.map do |gear|
