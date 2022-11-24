@@ -23,6 +23,7 @@ class GearsController < ApplicationController
 
   def show
     @gear = Gear.find(params[:id])
+    @rental = Rental.new
   end
 
   def create
