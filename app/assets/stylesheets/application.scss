@@ -11,6 +11,7 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "pages/user_profile";
 
 body {
   background-color: $primary-color-light;
@@ -86,4 +87,49 @@ body {
 
 li {
   list-style: none;
+}
+
+@media (min-width: 768px) {
+  .container-small {
+      width: 300px;
+  }
+  .container-large {
+      width: 970px;
+  }
+}
+@media (min-width: 992px) {
+  .container-small {
+      width: 500px;
+  }
+  .container-large {
+      width: 1170px;
+  }
+}
+@media (min-width: 1200px) {
+  .container-small {
+      width: 700px;
+  }
+  .container-large {
+      width: 1500px;
+  }
+}
+
+.container-small, .container-large {
+  max-width: 100%;
+}
+
+.btn-submit {
+  margin: auto;
+}
+
+.btn-no-border-right {
+  border-right: 0;
+}
+
+.scroll-box {
+  text-decoration: none;
+}
+
+.anchor-section2 {
+  top: -250px;
 }
