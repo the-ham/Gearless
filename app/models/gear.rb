@@ -1,5 +1,12 @@
 class Gear < ApplicationRecord
+  include PgSearch::Model
   belongs_to :user
+
+  pg_search_scope :search_by_gear_attribute,
+    against: [ :gear_type, :gear_name, :summary ],
+    using: {
+      tsearch: { prefix: true }
+    }
 
   has_many :rentals, dependent: :destroy
   has_many :reviews, through: :rentals, dependent: :destroy
