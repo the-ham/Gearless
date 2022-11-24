@@ -1,7 +1,7 @@
 .product-card {
     width: 400px;
-    box-shadow: 0 2px 7px #dfdfdf;
-    background: #F4F4F4;
+    box-shadow: 0 2px 7px $primary-color-light;
+    background: $primary-color-light;
     padding: 0;
     margin-bottom: 50px;
 
@@ -15,7 +15,7 @@
       justify-content: center;
       height: 150px;
       padding: 50px;
-      background: #f0f0f0;
+      background: $primary-color-light;
       overflow: hidden;
 
       img {
@@ -30,7 +30,7 @@
       font-size: 12px;
       font-weight: 700;
       text-transform: uppercase;
-      color: #2E5E55;
+      color: $green;
       margin-bottom: 10px;
       font-family: 'JetBrains Mono', monospace;
     }
@@ -53,14 +53,14 @@
         font-size: 30px;
         margin-bottom: 8px;
         text-transform: uppercase;
-        color: #06270A;
+        color: $primary-colors-dark;
       }
 
       p {
         font-size: 14px;
         line-height: 22px;
         margin-bottom: 10px;
-        color: #06270A;
+        color: $primary-colors-dark;
       }
     }
 
@@ -76,7 +76,7 @@
 
     .product-price {
       font-size: 24px;
-      color: #06270A;
+      color: $primary-colors-dark;
       font-weight: 500;
 
       small {
