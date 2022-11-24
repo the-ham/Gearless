@@ -1,31 +1,13 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
-
 require "faker"
+require "open-uri"
+
 
 User.destroy_all #syntax for destroy all
 
 # Admin acc
 User.create!(first_name: "Admin", last_name: "Admin", email: "admin@gmail.com", phone_number: 123456, description: "Admin account", password: "password")
-sam = User.create!(first_name: "Sam", last_name: "Admin", email: "sam@gmail.com", phone_number: 123456, description: "Admin account", password: "password")
-Gear.create!(user_id: sam.id,
-  gear_type: "Tent",
-  summary: "Great Tent",
-  address: Faker::Address.street_address,
-  price: rand(10.0...200.0))
 
-george = User.create!(first_name: "George", last_name: "Admin", email: "george@gmail.com", phone_number: 123456, description: "Admin account", password: "password")
-Gear.create!(user_id: george.id,
-  gear_type: "Cooking set",
-  summary: "Great gear",
-  address: Faker::Address.street_address,
-  price: rand(10.0...200.0))
-
+file = URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-Console-Set.jpg/1200px-NES-Console-Set.jpg")
 
 10.times do
   x = User.create!(password: "password",
@@ -34,12 +16,17 @@ Gear.create!(user_id: george.id,
                    email: Faker::Internet.email,
                    phone_number: Faker::PhoneNumber.phone_number,
                    description: Faker::Lorem.sentence)
+
   y = Gear.create!(user_id: x.id,
-                   gear_type: ["Sleeping Gear", "Cookery", "Hiking gear", "Survival gear"].sample,
-                   summary: Faker::Movies::VForVendetta.speech,
+                   gear_type: %w(Hiking Rock-Climbing Cooking Sleeping Kayak Navigation Shelter Sleeping-Bags Hydration Navigation First-Aid Survival Illumination Repair-Kits).sample,
+                   gear_name: Faker::Vehicle.drive_type,
+                   summary: "Lorem Ipsum",
                    address: Faker::Address.street_address,
                    total_occupancy: rand(1..10),
                    price: rand(10.0..200.0).round)
+  file = URI.open("https://source.unsplash.com/random?outdoor-gear")
+  y.photos.attach(io: file, filename: "tent.png", content_type: "image/jpg")
+  y.save
   Rental.create!(price: y.price,
                  total: y.price * 3,
                  start_date: Faker::Date.between(from: Date.today + 1, to: 3.days.from_now),
