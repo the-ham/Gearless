@@ -9,17 +9,28 @@
   </div>
 </div>
 
-
 <div class="gear-container">
   <div class="text-container">
     <h2 class="body-text">Any Gear, Anytime, Anywhere</h2>
   </div>
-  <div class="m-5">
-    <div class="row">
-      <% 10.times do %>
-        <%= render "components/card", gears: @gears %>
+  <div>
+    <%= turbo_frame_tag "search-form", target: "search-results" do %>
+      <%= form_with url: root_path, method: :get, class: "d-flex" do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Find a gear"
+        %>
+        <%= submit_tag "Search", class: "btn btn-primary" %>
       <% end %>
-    </div>
+    <% end %>
   </div>
+    <%= turbo_frame_tag "search-results" do %>
+      <div class="m-5">
+        <div class="row">
+              <%= render "components/card", gears: @gears %>
+        </div>
+      </div>
+    <% end %>
 </div>
 <%# <%= link_to 'sign out', destroy_user_session_path, data: {turbo_method: :delete} %>
