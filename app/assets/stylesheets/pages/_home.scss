@@ -68,7 +68,7 @@
 }
 
 .gear-container {
-  margin-top: -50px;
+
 
   .text-container {
     text-align: center;
@@ -91,9 +91,17 @@
     border-bottom: 2px solid #06270A;
     outline: none;
     background: transparent;
+    margin-left: 140px;
+    align-self: end;
+    padding-bottom: 12px;
   }
 
   .form-transparent:focus {
     color: $primary-colors-dark;
+  }
+
+  .search-form-container {
+    padding-bottom: 50px;
+    width: 60%
   }
 }
