@@ -1,35 +1,43 @@
 <div class="container">
   <div class="row justify-content-between flex-wrap">
     <div class="col-4 pt-5">
+      <div class="product-tumb">
+          <% if @gear.photos.present? %>
+            <%= cl_image_tag @gear.photos.first.key, crop: :fill, width: 500, height: 350 %>
+          <% else %>
+            <img src="https://images.unsplash.com/photo-1628087235616-4e146afcd061?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=776&q=80" alt="">
+          <% end %>
+        </div>
+      <div style="height: 120px;"></div>
       <div>
-        <img class="transform rotate-45 opacity-90 shadow" style="width: 400px;" src="https://hireafoodtruck.com.au/wp-content/uploads/2019/12/bbq-001.jpg"/>
-      </div>
-      <div style="height: 100px;"></div>
-      <div>
-        <div class="col-4" id="allreview">
+        <div id="allreview">
           <h2>Reviews</h2>
-          <ul class="list-group list-group-flush">
-              <% @gear.reviews.each do |review| %>
-                <li class="list-group-item">
-                <%= User.find(review.user_id).first_name %>
-                <%= User.find(review.user_id).last_name %>
-                <div class="review-rating">
-                <% review.rating.to_i.times do %>
-                <label class="rating-color">★</label>
-                <% end %>
-                <% review.blank_stars.times do %>
-                <label>☆</label>
-                <% end %>
-                <%= review.message %>
-                </div>
-                <div class="row justify-content-between">
-                  <div class="col-10">
-                    <%= review.content %>
+          <% if @gear.reviews == [] %>
+          <i style="font-size: 15px; font-weight: 500; line-height: 100%;">Book the gear and Be the frst one to review.</i>
+          <% else %>
+            <ul class="list-group list-group-flush">
+                <% @gear.reviews.each do |review| %>
+                  <li class="list-group-item">
+                  <%= User.find(review.user_id).first_name %>
+                  <%= User.find(review.user_id).last_name %>
+                  <div class="review-rating">
+                  <% review.rating.to_i.times do %>
+                  <label class="rating-color">★</label>
+                  <% end %>
+                  <% review.blank_stars.times do %>
+                  <label>☆</label>
+                  <% end %>
+                  <%= review.message %>
                   </div>
-                </div>
-                </li>
-              <% end %>
+                  <div class="row justify-content-between">
+                    <div class="col-10">
+                      <%= review.content %>
+                    </div>
+                  </div>
+                  </li>
+                <% end %>
             </ul>
+          <% end %>
         </div>
       </div>
     </div>
@@ -38,29 +46,38 @@
         <div>
           <p style="font-size: 15px; font-weight: 500; line-height: 100%; color: rgba(34, 36, 37, 1);"><%= @gear.gear_type %></p>
           <p style="font-size: 44px; font-weight: 500; line-height: 100%; color: rgba(34, 36, 37, 1);"><%= @gear.gear_name %></p>
-          <p style="font-size: 14px; letter-spacing: 0.80px; line-height: 100%; color: rgba(34, 36, 37, 0.85);">by <%= @gear.user.first_name %> <%= @gear.user.last_name %> <i class="fa-regular fa-envelope"></i></p>
+          <p style="font-size: 14px; letter-spacing: 0.80px; line-height: 100%; color: rgba(34, 36, 37, 0.85);">by
+          <a style="color: rgba(34, 36, 37, 0.85);" href=<%= user_path(@gear.user) %>><%= @gear.user.first_name %> <%= @gear.user.last_name %></a></p>
         </div>
-
         <div>
-          <i style="font-size: 20px; letter-spacing: 1px; line-height: 100%; color: black;">$<%= @gear.price %> </i><small>per night</small>
+          <p style="font-size: 20px; letter-spacing: 1px; line-height: 100%; color: black;"><span id="price"><%= @gear.price %></span>AUD<small> per night</small></p>
         </div>
-        <div style="height: 16px;"></div>
+        <div style="height: 10px;"></div>
         <div>
         <h4 style="font-size: 20px; color: rgba(34, 36, 37, 1);">Description:</h4>
         <p style="font-size: 12px; letter-spacing: 0.48px; color: rgba(34, 36, 37, 0.85);"><%= @gear.summary %> </p>
         </div>
         <hr>
         <div style="width: 432px; height: 89px; display: flex; flex-direction: column;">
-          <p style="font-size: 20px; line-height: 100%; ">Pick-up date<br/></p>
-          <p style="width: 185px; height: 32px; font-size: 20px; line-height: 100%; color: black;">Return date<br/></p>
-
+          <%= simple_form_for [@gear, @rental], data: {controller: 'flatpickr'} do |form| %>
+            <div class="row justify-content-between flex-wrap">
+              <div class="col-6">
+              <%= form.input :start_date, label: 'Pick-up date', as: :string, input_html: { data: { flatpickr_target: "startTime" } } %>
+              </div>
+              <div class="col-6">
+              <%= form.input :end_date, label: 'Return date', as: :string, input_html: { data: { flatpickr_target: "endTime" }, id: 'end_time'} %>
+              </div>
+            </div>
+              <p style="font-size: 20px; letter-spacing: 1px; line-height: 100%; color: black;">Total Price: <span id="totalprice">0</span> AUD</p>
+              <div style="height: 10px;"></div>
+              <div class="align-items-center text-center p-2" style="width: 429px; height: 50px; background-color: rgba(35, 37, 38, 1); border-radius: 6px; position: relative;">
+              <%= form.submit 'Book this gear', onclick: "confirm('Are you sure to book this gear?')", id: "submit", style: "font-size: 20px; color: white; margin-bottom: 0; background-color: transparent; border: 0"%>
+              </div>
+          <% end %>
         </div>
 
-        <p style="font-size: 20px; letter-spacing: 1px; line-height: 100%; color: black;">Total Price: </p>
 
-        <div class="align-items-center text-center p-2" style="width: 429px; height: 50px; background-color: rgba(35, 37, 38, 1); border-radius: 6px; position: relative;">
-          <p style="font-size: 20px; color: white; margin-bottom: 0;">Book this gear</p>
-        </div>
+
 
         </div>
         </div>

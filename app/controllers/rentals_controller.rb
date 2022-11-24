@@ -5,6 +5,10 @@ class RentalsController < ApplicationController
   # index view of all rentals where i am the renter
   def index
     @rentals = Rental.where(user: @user)
+    @pending = Rental.where(user: @user, status: "pending")
+    @cancelled = Rental.where(user: @user, status: "cancelled")
+    @confirmed = Rental.where(user: @user, status: "confirmed")
+    @completed = Rental.where(user: @user, status: "completed")
   end
 
   # index view of all rentals made by other renters where i am the host
