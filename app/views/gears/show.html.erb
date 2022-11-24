@@ -1,9 +1,13 @@
 <div class="container">
   <div class="row justify-content-between flex-wrap">
     <div class="col-4 pt-5">
-      <div>
-        <img style="width: 400px;" src="https://hireafoodtruck.com.au/wp-content/uploads/2019/12/bbq-001.jpg"/>
-      </div>
+      <div class="product-tumb">
+          <% if @gear.photos.present? %>
+            <%= cl_image_tag @gear.photos.first.key, crop: :fill %>
+          <% else %>
+            <img src="https://images.unsplash.com/photo-1628087235616-4e146afcd061?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=776&q=80" alt="">
+          <% end %>
+        </div>
       <div style="height: 120px;"></div>
       <div>
         <div id="allreview">
@@ -66,7 +70,7 @@
               </div>
             </div>
               <p style="font-size: 20px; letter-spacing: 1px; line-height: 100%; color: black;">Total Price: </p>
-              <p id="total-price"></p>
+              <p id="totalprice"></p>
               <div class="align-items-center text-center p-2" style="width: 429px; height: 50px; background-color: rgba(35, 37, 38, 1); border-radius: 6px; position: relative;">
               <%= form.submit 'Book this gear', style: "font-size: 20px; color: white; margin-bottom: 0; background-color: transparent; border: 0" %>
               </div>
