@@ -5,7 +5,11 @@
   <div class="hero-text-container">
     <h1 class="hero-text">Explore any place you want</h1>
     <h2 class="secondary-text">Rent the gear you need for any occasion</h2>
-    <a class="button" href= <%= new_user_path %>%>Explore More</a>
+    <a class="button-yellow" href= <%= new_user_path %>%>Login or Get Started</a>
+    <div class="scroll-container">
+      <p>Scroll Down for Gears</p>
+      <%= image_tag "down-arrow", width: "50px", height: "50px"%>
+    </div>
   </div>
 </div>
 
@@ -19,9 +23,9 @@
         <%= text_field_tag :query,
           params[:query],
           class: "form-control",
-          placeholder: "Find a gear"
+          placeholder: "Find something"
         %>
-        <%= submit_tag "Search", class: "btn btn-primary" %>
+        <%= submit_tag "Search", class: "button-green" %>
       <% end %>
     <% end %>
   </div>
