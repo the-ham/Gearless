@@ -5,7 +5,7 @@
           <div class="row no-gutters">
               <div class="col-sm-5">
                 <div class="personal-product-tumb">
-                    <% if @gears.first.photos.present? %>
+                    <% if gear.photos.present? %>
                       <p class="hover-text">See More</p>
                       <%= cl_image_tag gear.photos.first.key, crop: :fill %>
                     <% else %>

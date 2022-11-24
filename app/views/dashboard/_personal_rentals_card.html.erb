@@ -1,5 +1,22 @@
-<div class="card">
-  <div class="card-body">
+<% @rentals_by_me.each do |r| %>
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-10 rental-container">
 
+        </div>
+        <div class="col-2 d-flex justify-content-end">
+          <%= link_to edit_rental_path(r),
+            class: 'btn btn-light btn-sm border text-right' do %>
+            <i class="fa-regular fa-pen-to-square"></i>
+          <% end %>
+          <%= link_to rental_path(r, rental: { status: 'cancelled' }),
+            class: 'btn btn-light btn-sm border text-right',
+            data: { turbo_method: :patch, turbo_confirm: "Are you sure you want to cancel this rental?" } do %>
+            <i class="fa-regular fa-trash-can"></i>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+<% end %>

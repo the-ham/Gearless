@@ -2,7 +2,11 @@
   <div class="row">
     <%# My rentals %>
     <div class="col">
-      <%= render "personal-rentals-card", rentals: @gears %>
+      <% if @rentals_by_me.empty? %>
+        <h2 class="body-text">Nothing rented so far!</h2>
+      <% else %>
+        <%= render "personal_rentals_card", rentals: @rentals %>
+      <% end %>
     </div>
     <%# My map %>
     <div class="col w-50 map-render"
@@ -12,8 +16,6 @@
     </div>
   </div>
 </div>
-
-
 
 
 <div class="text-container">
