@@ -8,14 +8,16 @@
       <h2 class="secondary-text">Rent the gear you need for any occasion</h2>
       <a class="button-yellow" href= <%= new_user_path %>%>Login or Get Started</a>
       <div class="scroll-container">
-        <p>Scroll Down for Gears</p>
-        <%= image_tag "down-arrow", width: "50px", height: "50px"%>
+        <%= link_to "#section2", class:"scroll-box" do %>
+          <p>Scroll Down for Gears</p>
+          <%= image_tag "down-arrow", width: "50px", height: "50px"%>
+        <% end %>
       </div>
     </div>
   </div>
 <% end %>
 
-<div class="gear-container">
+<div class="gear-container", id="section2">
   <div class="text-container">
     <h2 class="body-text">Any Gear, Anytime, Anywhere</h2>
   </div>
