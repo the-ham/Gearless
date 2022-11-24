@@ -21,7 +21,8 @@
   <div class="text-container">
     <h2 class="body-text">Any Gear, Anytime, Anywhere</h2>
   </div>
-  <div class="container justify-content-center">
+  <div class="d-flex justify-content-center">
+    <div class="search-form-container">
       <%= turbo_frame_tag "search-form", target: "search-results" do %>
         <%= form_with url: root_path, method: :get, class: "d-flex" do %>
           <%= text_field_tag :query,
@@ -32,6 +33,7 @@
           <%= submit_tag "Search", class: "button-green" %>
         <% end %>
       <% end %>
+    </div>
   </div>
     <%= turbo_frame_tag "search-results" do %>
       <div class="m-5">
@@ -40,4 +42,8 @@
         </div>
       </div>
     <% end %>
+
+  <div class="d-flex align-items-center justify-content-center mb-5">
+    <div class="button-green">See More</div>
+  </div>
 </div>

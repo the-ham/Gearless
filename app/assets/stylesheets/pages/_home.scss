@@ -26,8 +26,8 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    margin-top: 100px;
-    margin-bottom: -100px;
+    // margin-top: 100px;
+    // margin-bottom: -100px;
 
     .hero-text {
       font-family: $body-font;
@@ -68,7 +68,7 @@
 }
 
 .gear-container {
-  margin-top: -50px;
+
 
   .text-container {
     text-align: center;
@@ -88,12 +88,22 @@
     font-size: 23px;
     color: #2E5E55;
     border: none;
+    margin-left: 140px;
     border-bottom: 2px solid #06270A;
     outline: none;
     background: transparent;
+    align-self: flex-end;
+    margin-left: 140px;
+    align-self: end;
+    padding-bottom: 12px;
   }
 
   .form-transparent:focus {
     color: $primary-colors-dark;
+  }
+
+  .search-form-container {
+    padding-bottom: 50px;
+    width: 60%
   }
 }
