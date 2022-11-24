@@ -1,32 +1,29 @@
-<h1>All Gears for Rent</h1>
-<%= link_to new_user_gear_path(@user) do %>
-            <p>Create New Gear</p>
-          <% end %>
-<br>
-  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-  <div style="width: 200px; height: 200px;"
-       data-controller="map"
-       data-map-markers-value="<%= @markers.to_json %>"
-       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+<div class="map-container">
+  <div class="row">
+    <%# My rentals %>
+    <div class="col">
+      <% if @rentals_by_me.empty? %>
+        <h2 class="body-text">Nothing rented so far!</h2>
+      <% else %>
+        <%= render "personal_rentals_card", rentals: @rentals %>
+      <% end %>
+    </div>
+    <%# My map %>
+    <div class="col w-50 map-render"
+          data-controller="map"
+          data-map-markers-value="<%= @markers.to_json %>"
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
   </div>
-  <% @gears.each do |gear| %>
-      <li>
-        Gear Type:<%= gear.gear_type %> <br>
-        Summary:<%= gear.summary %> <br>
-        $<%= gear.price %> <br>
-        <br>
-        <% gear.photos.each do |photo| %>
-          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-        <% end %> <br>
-        -------------------------- <br>
-        <%= link_to edit_gear_path(gear), class: 'btn btn-light btn-sm border text-right' do %>
-            <i class="fa-regular fa-pen-to-square"></i>
-          <% end %>
-        <%= link_to gear_path(gear),
-        data: {turbo_method: :delete, turbo_confirm: "Are you sure to delete this gear?"},
-        class: 'btn btn-light btn-sm border text-right' do %>
-          <i class="fa-regular fa-trash-can"></i>
-        <% end %> <br>
-        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX <br>
-      </li>
-  <% end %>
+</div>
+
+
+<div class="text-container">
+  <h2 class="body-text">Your Gears</h2>
+</div>
+
+<div class="container">
+  <div class="row">
+        <%= render "personal_gear_card", gears: @gears %>
+  </div>
+</div>

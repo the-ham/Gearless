@@ -1,0 +1,88 @@
+// lhs card with user information and message button
+.user-info {
+  background-color: $light-gray;
+  // border-radius: 8px;
+  width: 30%;
+  padding: 50px;
+  height: 400px;
+  color: $gray;
+  // font-family: 'JetBrains Mono', monospace;
+
+  h3 {
+    font-family: $logo-font;
+    margin-bottom: 0;
+  }
+
+  h5 {
+    font-family: $headers-font;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 22px;
+    margin-bottom: 10px;
+    color: $primary-colors-dark;
+    font-family: $body-font;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.listings {
+  display: flex;
+  flex-direction: column;
+  width: 65%;
+  height: auto;
+
+  h3 {
+    font-family: $logo-font;
+    margin: 0 0 4px 0;
+  }
+}
+
+.section-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.button {
+  background: transparent;
+  color: $primary-colors-dark;
+  border: 2px solid $primary-colors-dark ;
+  padding: 8px;
+  text-align: center;
+}
+
+.button:hover {
+  background-color: $primary-colors-dark;
+  color: $primary-color-light;
+  transition: 0.5s;
+}
+
+// rhs card with all their gear listings
+.gear-info{
+  background-color:$light-gray;
+  width: 90%;
+  height: 100px;
+  padding: 16px;
+  display: flex;
+
+  h5 {
+    font-weight: 100px;
+  }
+
+  h6{
+    margin: 0;
+  }
+  p {
+    margin: 8px 0;
+    color: grey;
+    font-size: small ;
+  }
+  span {
+    color: $yellow;
+  }
+}

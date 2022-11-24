@@ -1,0 +1,39 @@
+	<% gears.each do |gear| %>
+    <div class="col">
+      <div class="row">
+        <div class="personal-product-card">
+          <div class="row no-gutters">
+              <div class="col-sm-5">
+                <div class="personal-product-tumb">
+                    <% if gear.photos.present? %>
+                      <p class="hover-text">See More</p>
+                      <%= cl_image_tag gear.photos.first.key, crop: :fill %>
+                    <% else %>
+                      <img src="https://images.unsplash.com/photo-1628087235616-4e146afcd061?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=776&q=80" alt="">
+                    <% end %>
+                  </div>
+              </div>
+              <div class="col-sm-7">
+                <div class="personal-product-details">
+                  <span class="personal-product-catagory"><%= @gears.first.gear_type %></span>
+                  <h4><%= @gears.first.gear_name %></h4>
+                  <p class="personal-product-summary"><%= @gears.first.summary %></p>
+                  <p>Capacity: <%= @gears.first.total_occupancy %></p>
+                  <div class="personal-product-bottom-details">
+                    <div class="personal-product-price">$<%= @gears.first.price.round %> <small> per night</small></div>
+                    <%= link_to edit_gear_path(@gears.first), class: 'btn btn-light btn-sm border text-right' do %>
+                      <i class="fa-regular fa-pen-to-square"></i>
+                    <% end %>
+                    <%= link_to gear_path(@gears.first),
+                    data: {turbo_method: :delete, turbo_confirm: "Are you sure to delete this gear?"},
+                    class: 'btn btn-light btn-sm border text-right' do %>
+                      <i class="fa-regular fa-trash-can"></i>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+    </div>
+  </div>
+<% end %>
