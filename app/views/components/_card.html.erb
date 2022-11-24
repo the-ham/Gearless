@@ -11,7 +11,10 @@
           <% end %>
         </div>
         <div class="product-details">
-          <span class="product-catagory"><%= gear.gear_type %></span>
+          <div class="flex-container">
+            <div class="product-catagory"><%= gear.gear_type %></div>
+            <div class="product-rating"><span>★</span> <%= rand(3.9..5.0).round(1) %></div>
+          </div>
           <h4><%= gear.gear_name %></h4>
           <p class="product-summary"><%= gear.summary %></p>
           <p>Capacity: <%= gear.total_occupancy %></p>
