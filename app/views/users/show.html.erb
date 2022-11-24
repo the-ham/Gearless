@@ -1,4 +1,4 @@
-<div class="container d-flex justify-content-around">
+<div class="container d-flex justify-content-between">
   <div class="user-info d-flex flex-column justify-content-between">
 
     <%# user name and avatar %>
@@ -18,7 +18,6 @@
         </div>
     </div>
 
-
     <div>
       <h5>About me:</h5>
       <p><%= @user.description %></p>
@@ -27,15 +26,17 @@
     <% if @user != current_user %>
       <%= link_to  'Start Chat', user_messages_path(@user), class: "button" %>
     <% end %>
-
   </div>
 
   <div class="listings">
-    <h3> <%= "#{@user.first_name.capitalize}'s listings:" %></h3>
-    <% if @gears.empty? %>
-      <p> <%= "#{@user.first_name.capitalize} does not have any listings yet." %> </p>
-    <% else %>
-      <p>here are the listings</p>
-    <% end %>
+    <h3><%= "#{@user.first_name.capitalize}'s listings:" %></h3>
+    <div>
+      <% if @gears.empty? %>
+        <p> <%= "#{@user.first_name.capitalize} does not have any listings yet." %> </p>
+      <% else %>
+        <%= render "components/gear_list", gears: @gears %>
+      <% end %>
+    </div>
   </div>
+
 </div>
