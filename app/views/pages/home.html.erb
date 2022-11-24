@@ -17,17 +17,17 @@
   <div class="text-container">
     <h2 class="body-text">Any Gear, Anytime, Anywhere</h2>
   </div>
-  <div>
-    <%= turbo_frame_tag "search-form", target: "search-results" do %>
-      <%= form_with url: root_path, method: :get, class: "d-flex" do %>
-        <%= text_field_tag :query,
-          params[:query],
-          class: "form-control",
-          placeholder: "Find something"
-        %>
-        <%= submit_tag "Search", class: "button-green" %>
+  <div class="container justify-content-center">
+      <%= turbo_frame_tag "search-form", target: "search-results" do %>
+        <%= form_with url: root_path, method: :get, class: "d-flex" do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-transparent",
+            placeholder: "Find something"
+          %>
+          <%= submit_tag "Search", class: "button-green" %>
+        <% end %>
       <% end %>
-    <% end %>
   </div>
     <%= turbo_frame_tag "search-results" do %>
       <div class="m-5">
