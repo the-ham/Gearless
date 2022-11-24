@@ -1,6 +1,6 @@
 .product-card {
     width: 400px;
-    box-shadow: 0 2px 7px $primary-color-light;
+    box-shadow: 0 2px 7px #d9d9d9;
     background: $primary-color-light;
     padding: 0;
     margin-bottom: 50px;
@@ -38,6 +38,7 @@
     .product-details {
       padding: 15px 10px;
       border: 2px dashed #2e5e553b;
+      border-top: none;
       height: 265px;
 
 
