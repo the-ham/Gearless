@@ -1,5 +1,5 @@
 class GearsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index]
+  skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_user, only: [:create, :new, :index, :update, :edit, :destroy]
 
   def index

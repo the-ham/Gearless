@@ -12,7 +12,7 @@ class Gear < ApplicationRecord
   has_many :reviews, through: :rentals, dependent: :destroy
   has_many_attached :photos
 
-  validates :gear_name, presence: true
+  # validates :gear_name, presence: true
   validates :gear_type, presence: true
   validates :gear_type, inclusion: { in: %w(Hiking Rock-Climbing Cooking Sleeping Kayak Navigation Shelter Sleeping-Bags Hydration Navigation First-Aid Survival Illumination Repair-Kits) }
   validates :address, presence: true
