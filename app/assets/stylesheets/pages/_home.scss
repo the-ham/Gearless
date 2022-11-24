@@ -88,9 +88,11 @@
     font-size: 23px;
     color: #2E5E55;
     border: none;
+    margin-left: 140px;
     border-bottom: 2px solid #06270A;
     outline: none;
     background: transparent;
+    align-self: flex-end;
   }
 
   .form-transparent:focus {
