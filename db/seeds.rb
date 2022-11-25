@@ -3,9 +3,6 @@ require "open-uri"
 
 User.destroy_all #syntax for destroy all
 
-# Admin acc
-User.create!(first_name: "Admin", last_name: "Admin", email: "admin@gmail.com", phone_number: 123456, description: "Admin account", password: "password")
-
 file = URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-Console-Set.jpg/1200px-NES-Console-Set.jpg")
 
 # 10.times do
@@ -36,21 +33,27 @@ file = URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-C
 # end
 
 # id: 1
-User.create!(password: "password",
+x = User.create!(password: "password",
             first_name: "Christian",
             last_name: "Grey",
             location: "Vancouver",
             email: "chris@fiftyshades.org",
             phone_number: Faker::PhoneNumber.phone_number,
             description: "Are you going camping with my gear or will I have to rope you into it?")
+            file = URI.open("https://static.wikia.nocookie.net/fiftyshadesofgrey/images/0/0a/Christian12.png/revision/latest/scale-to-width-down/200?cb=20131113175843")
+                x.avatar.attach(io: file, filename: "stove.png", content_type: "image/jpg")
+                x.save
 # id: 2
-User.create!(password: "password",
+z = User.create!(password: "password",
             first_name: "Ron",
             last_name: "Weasley",
             location: "The Burrow",
             email: "weasley@hogwarts.edu.au",
             phone_number: Faker::PhoneNumber.phone_number,
             description: "Love going camping to get away from the chaos at home. My gear is seven generations old but trust me, it will never fail you. Full refunds processed regularly.")
+            file = URI.open("https://www.denofgeek.com/wp-content/uploads/2016/08/ron-weasley.jpg?resize=768%2C432")
+                z.avatar.attach(io: file, filename: "ron.png", content_type: "image/jpg")
+                z.save
 # id: 3
 User.create!(password: "password",
             first_name: "Edward",
@@ -197,7 +200,13 @@ Rental.create!(price: d.price,
               gear_id: 4)
 Review.create(content: "Best cooking set ever - it really never fails! Ron is truly brave of heart.",
               rating: 4,
-              rental_id: 3)
+              rental_id: 3,
+              user_id: 3)
 Review.create(content: "Very sturdy sticks.",
               rating: 5,
-              rental_id: 1)
+              rental_id: 1,
+              user_id: 4)
+
+
+# Admin acc
+User.create!(first_name: "Admin", last_name: "Admin", email: "admin@gmail.com", phone_number: 123456, description: "Admin account", password: "password")
