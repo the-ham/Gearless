@@ -24,7 +24,7 @@
             <p class="product-summary"><%= @gear.summary %> </p>
           </div>
           <div>
-            <p class="my-3"style="font-size: 20px; letter-spacing: 1px; line-height: 100%; color: black;">$<span id="price"><%= @gear.price %></span><small> per night</small></p>
+            <p class="my-3"style="font-size: 20px; letter-spacing: 1px; line-height: 100%; color: black;">$<span id="price"><%= @gear.price.round() %></span><small> per night</small></p>
           </div>
           <div class="my-5">
             <%= simple_form_for [@gear, @rental], data: {controller: 'flatpickr'} do |form| %>
@@ -76,4 +76,4 @@
           <% end %>
         </div>
       </div>
-</div>
+.round</div>
