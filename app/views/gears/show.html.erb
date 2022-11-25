@@ -1,6 +1,6 @@
-<div class="container">
-  <div class="row justify-content-between flex-wrap">
-    <div class="col-4 pt-5">
+<div class="container pt-5">
+  <div class="row">
+    <div class="col">
       <div class="product-tumb">
           <% if @gear.photos.present? %>
             <%= cl_image_tag @gear.photos.first.key, crop: :fill, width: 500, height: 350 %>
@@ -9,11 +9,47 @@
           <% end %>
         </div>
       <div style="height: 120px;"></div>
-      <div>
+
+    </div>
+    <div class="col gear-card" >
+      <div class="product-details">
+        <div class="flex-container">
+          <div class="product-catagory"><%= @gear.gear_type %></div>
+          <div class="product-rating"><span>★</span> <%= rand(3.9..5.0).round(1) %></div>
+        </div>
+            <h4><%= @gear.gear_name %></h4>
+            <p>by
+            <a href=<%= user_path(@gear.user) %>><%= @gear.user.first_name %> <%= @gear.user.last_name %></a></p>
+          <div>
+            <p class="product-summary"><%= @gear.summary %> </p>
+          </div>
+          <div>
+            <p class="my-3"style="font-size: 20px; letter-spacing: 1px; line-height: 100%; color: black;">$<span id="price"><%= @gear.price %></span><small> per night</small></p>
+          </div>
+          <div class="my-5">
+            <%= simple_form_for [@gear, @rental], data: {controller: 'flatpickr'} do |form| %>
+              <div class="row justify-content-between flex-wrap">
+                <div class="col-6">
+                  <%= form.input :start_date, label: 'Pick-up date', as: :string, input_html: { data: { flatpickr_target: "startTime" }, class: "form-transparent" } %>
+                </div>
+                <div class="col-6">
+                  <%= form.input :end_date, label: 'Return date', as: :string, input_html: { data: { flatpickr_target: "endTime" }, class: "form-transparent", id: 'end_time'} %>
+                </div>
+              </div>
+                <h3 class="product-price">Total Price: <span id="totalprice">0</span> AUD</h3>
+                <%= form.submit 'Book this gear', onclick: "confirm('Are you sure to book this gear?')", id: "submit",class:"button-green w-100"%>
+            <% end %>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+      <div class="container">
         <div id="allreview">
           <h2>Reviews</h2>
           <% if @gear.reviews == [] %>
-          <i style="font-size: 15px; font-weight: 500; line-height: 100%;">Book the gear and Be the frst one to review.</i>
+          <i style="font-size: 15px; font-weight: 500; line-height: 100%;">Book the gear and be the first to review.</i>
           <% else %>
             <ul class="list-group list-group-flush">
                 <% @gear.reviews.each do |review| %>
@@ -40,48 +76,4 @@
           <% end %>
         </div>
       </div>
-    </div>
-    <div class="col-6" >
-      <div style="width: 432px; height: 819px; display: inline-flex; flex-direction: column; justify-content: flex-start;">
-        <div>
-          <p style="font-size: 15px; font-weight: 500; line-height: 100%; color: rgba(34, 36, 37, 1);"><%= @gear.gear_type %></p>
-          <p style="font-size: 44px; font-weight: 500; line-height: 100%; color: rgba(34, 36, 37, 1);"><%= @gear.gear_name %></p>
-          <p style="font-size: 14px; letter-spacing: 0.80px; line-height: 100%; color: rgba(34, 36, 37, 0.85);">by
-          <a style="color: rgba(34, 36, 37, 0.85);" href=<%= user_path(@gear.user) %>><%= @gear.user.first_name %> <%= @gear.user.last_name %></a></p>
-        </div>
-        <div>
-          <p style="font-size: 20px; letter-spacing: 1px; line-height: 100%; color: black;"><span id="price"><%= @gear.price %></span>AUD<small> per night</small></p>
-        </div>
-        <div style="height: 10px;"></div>
-        <div>
-        <h4 style="font-size: 20px; color: rgba(34, 36, 37, 1);">Description:</h4>
-        <p style="font-size: 12px; letter-spacing: 0.48px; color: rgba(34, 36, 37, 0.85);"><%= @gear.summary %> </p>
-        </div>
-        <hr>
-        <div style="width: 432px; height: 89px; display: flex; flex-direction: column;">
-          <%= simple_form_for [@gear, @rental], data: {controller: 'flatpickr'} do |form| %>
-            <div class="row justify-content-between flex-wrap">
-              <div class="col-6">
-              <%= form.input :start_date, label: 'Pick-up date', as: :string, input_html: { data: { flatpickr_target: "startTime" } } %>
-              </div>
-              <div class="col-6">
-              <%= form.input :end_date, label: 'Return date', as: :string, input_html: { data: { flatpickr_target: "endTime" }, id: 'end_time'} %>
-              </div>
-            </div>
-              <p style="font-size: 20px; letter-spacing: 1px; line-height: 100%; color: black;">Total Price: <span id="totalprice">0</span> AUD</p>
-              <div style="height: 10px;"></div>
-              <div class="align-items-center text-center p-2" style="width: 429px; height: 50px; background-color: rgba(35, 37, 38, 1); border-radius: 6px; position: relative;">
-              <%= form.submit 'Book this gear', onclick: "confirm('Are you sure to book this gear?')", id: "submit", style: "font-size: 20px; color: white; margin-bottom: 0; background-color: transparent; border: 0"%>
-              </div>
-          <% end %>
-        </div>
-
-
-
-
-        </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
