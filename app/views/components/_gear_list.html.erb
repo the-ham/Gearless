@@ -1,6 +1,6 @@
 <% gears.each do |gear| %>
-  <div class="gear-info">
-    <div class="d-flex flex-column justify-content-between">
+  <div class="gear-info d-flex">
+    <div class="mw-30">
       <h5><%= gear.gear_type %> </h5>
       <% if gear.photos.present? %>
         <%= cl_image_tag gear.photos.first.key, crop: :fill %>
