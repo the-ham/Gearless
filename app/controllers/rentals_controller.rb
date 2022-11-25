@@ -24,7 +24,7 @@ class RentalsController < ApplicationController
     @rental = Rental.new(rental_params)
     set_rental_info
     if @rental.save
-      redirect_to user_rentals_path(@user), status: :see_other
+      redirect_to user_my_gear_path(@user), status: :see_other
     else
       render :new, status: :unprocessable_entity
     end
