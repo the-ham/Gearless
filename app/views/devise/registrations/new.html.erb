@@ -15,6 +15,9 @@
                   required: true,
                   autofocus: true,
                   input_html: { autocomplete: "email", class: 'form-transparent', placeholder: 'johnwick@gmail.com'  }%>
+      <%= f.input :location,
+                  required: true,
+                  input_html: { autocomplete: "location", class: 'form-transparent', placeholder: 'Sydney'  }%>
       <%= f.input :phone_number,
                   required: true,
                   autofocus: true,
