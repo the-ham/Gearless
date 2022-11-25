@@ -47,7 +47,7 @@ User.create!(password: "password",
 User.create!(password: "password",
             first_name: "Ron",
             last_name: "Weasley",
-            location: "The Burrow"
+            location: "The Burrow",
             email: "weasley@hogwarts.edu.au",
             phone_number: Faker::PhoneNumber.phone_number,
             description: "Love going camping to get away from the chaos at home. My gear is seven generations old but trust me, it will never fail you. Full refunds processed regularly.")
@@ -68,11 +68,10 @@ User.create!(password: "password",
               phone_number: Faker::PhoneNumber.phone_number,
               description: "All gear comes sterilized and cleaned. Cheeky gift with every rental over $100.")
 
-
 a = Gear.create!(user_id: 1,
             gear_type: "Hiking",
             gear_name: "Black Diamond Alpine FLZ 140cm Trekking Poles",
-            summary: "Premium hiking poles to provide supprt for maximum performance. Used once on the Three Capes Track, super durable and they even pack down for easy transport and storage.",
+            summary: "Premium hiking poles to provide support for maximum performance. Used once on the Three Capes Track, super durable and they even pack down for easy transport and storage.",
             address: Faker::Address.street_address,
             total_occupancy: 1,
             price: 75)
@@ -81,8 +80,8 @@ a = Gear.create!(user_id: 1,
             a.save
 b = Gear.create!(user_id: 1,
                 gear_type: "Sleeping",
-                gear_name: "Wanderer Scorch Duo Hooded Sleeping Bag",
-                summary: "Get snug with the person you love on a cold night in the bush. It's a double sleeping bag made with a temperature rating of 0°C to keep it toasty warm in cold weather. You can also unzip it and use it as a single sleeping bag, for a +5°C comfort rating.",
+                gear_name: "Duo Hooded Sleeping Bag",
+                summary: "Get snug with the person you love on a cold night in the bush",
                 address: Faker::Address.street_address,
                 total_occupancy: 2,
                 price: 95)
@@ -139,5 +138,52 @@ g = Gear.create!(user_id: 4,
                 total_occupancy: 4,
                 price: 100)
                 file = URI.open("https://www.bcf.com.au/dw/image/v2/BBRV_PRD/on/demandware.static/-/Sites-srg-internal-master-catalog/default/dw7717caa9/images/634060/BCF_634060_hi-res.jpg?sw=1000&sh=1000&sm=fit&q=80")
-                f.photos.attach(io: file, filename: "kayak.png", content_type: "image/jpg")
-                f.save
+                g.photos.attach(io: file, filename: "kayak.png", content_type: "image/jpg")
+                g.save
+
+# rental for the hiking sticks id 1 by user 4
+Rental.create!(price: a.price,
+                 total: a.price * 3,
+                 start_date: '2020-09-23',
+                 end_date: '2020-09-26',
+                 status: "completed",
+                 user_id: 4,
+                 gear_id: 1)
+# rental for the sleeping bag id 2 by user 2
+Rental.create!(price: b.price,
+              total: b.price * 6,
+              start_date: '2023-01-18',
+              end_date: '2023-01-26',
+              status: "pending",
+              user_id: 2,
+              gear_id: 2)
+# rental for the cooking gear id 3 by user 3
+Rental.create!(price: c.price,
+              total: c.price * 3,
+              start_date: '2021-07-18',
+              end_date: '2021-07-21',
+              status: "completed",
+              user_id: 3,
+              gear_id: 3)
+# rental for the trock id 4 by user 2
+Rental.create!(price: d.price,
+              total: d.price * 3,
+              start_date: '2021-07-18',
+              end_date: '2021-07-21',
+              status: "completed",
+              user_id: 2,
+              gear_id: 4)
+# rental for the trock id 4 by user 2
+Rental.create!(price: d.price,
+              total: d.price * 3,
+              start_date: '2021-07-18',
+              end_date: '2021-07-21',
+              status: "cancelled",
+              user_id: 1,
+              gear_id: 4)
+Review.create(content: "Best cooking set ever - it really never fails! Ron is truly brave of heart.",
+              rating: 4,
+              rental_id: 3)
+Review.create(content: "Very sturdy sticks.",
+              rating: 5,
+              rental_id: 1)
