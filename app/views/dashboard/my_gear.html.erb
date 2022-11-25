@@ -1,19 +1,24 @@
-<div class="map-container">
-  <div class="row">
-    <div class="col w-100 map-render"
-          data-controller="map"
-          data-map-markers-value="<%= @markers.to_json %>"
-          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+<div class="container">
+  <h2 class="text-center">My rentals and gears</h2>
+  <br>
+  <div class="map-container rounded-lg">
+    <div class="row">
+      <div class="col w-100 map-render"
+            data-controller="map"
+            data-map-markers-value="<%= @markers.to_json %>"
+            data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
     </div>
   </div>
 </div>
+<br>
 
-
-
+<br>
 <div class="container">
   <div class="row">
     <div class="col">
-      <h2>Rentals by me</h2>
+      <h2 class="text-center">Rentals by me</h2>
+      <br>
       <% if @rentals_by_me.empty? %>
         <h2 class="body-text">Nothing rented so far!</h2>
       <% else %>
@@ -21,7 +26,8 @@
       <% end %>
     </div>
     <div class="col">
-      <h2>Rentals hosted by me</h2>
+      <h2 class="text-center">Rentals hosted by me</h2>
+      <br>
       <% if @rentals_hosted_by_me.empty? %>
         <h2 class="body-text">No gears rented out yet!</h2>
       <% else %>
@@ -31,16 +37,13 @@
   </div>
 </div>
 
-
-
-
-
-
-
-
-<h2 class="body-text">Your Gears</h2>
+<br>
 <div class="container">
-  <div class="row">
-        <%= render "personal_gear_card", gears: @gears %>
+  <h2 class="body-text text-center">My Gears</h2>
+  <br>
+  <div class="container">
+    <div class="row">
+      <%= render "personal_gear_card", gears: @gears %>
+    </div>
   </div>
 </div>

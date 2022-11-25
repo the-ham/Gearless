@@ -21,12 +21,12 @@
                   <p>Capacity: <%= gear.total_occupancy %></p>
                   <div class="personal-product-bottom-details">
                     <div class="personal-product-price">$<%= gear.price.round %> <small> per night</small></div>
-                    <%= link_to edit_gear_path(gear), class: 'btn btn-light btn-sm border text-right' do %>
+                    <%= link_to edit_gear_path(gear), class: 'btn btn-sm border text-right' do %>
                       <i class="fa-regular fa-pen-to-square"></i>
                     <% end %>
                     <%= link_to gear_path(gear),
                     data: {turbo_method: :delete, turbo_confirm: "Are you sure to delete this gear?"},
-                    class: 'btn btn-light btn-sm border text-right' do %>
+                    class: 'btn btn-sm border text-right' do %>
                       <i class="fa-regular fa-trash-can"></i>
                     <% end %>
                   </div>
