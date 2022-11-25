@@ -15,9 +15,9 @@ class DashboardController < ApplicationController
     @gears = Gear.where(user: @user)
 
     #1. Gears listed by me, rented by others
-    rentals_v1 = Rental.select { |rental| (rental.gear.user_id == current_user.id && (rental.status == "pending" ||  rental.status == "confirmed")) }
-    rentals_v1_ids = rentals_v1.map { |x| x.gear_id }
+    rentals_v1 = Rental.select { |rental| (rental.gear.user_id == current_user.id && (rental.status == "pending" ||  rental.status == "confirmed")) || rental.user_id == current_user.id}
     @map_gears_all = Gear.where(id: rentals_v1.map(&:gear_id))
+
     @markers = @map_gears_all.geocoded.map do |gear|
       {
         lat: gear.latitude,
