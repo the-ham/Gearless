@@ -112,10 +112,10 @@ d = Gear.create!(user_id: 3,
 
 e = Gear.create!(user_id: 4,
                   gear_type: "Shelter",
-                  gear_name: "Coleman Swagger Instant Tent 3 Person",
-                  summary: "This 3 person tent uses an instant design that makes it quick and easy to set up. It’s tough and durable, with a strong frame design, and spring-loaded fiberglass poles for more head room. Perfect for your next trip out.",
+                  gear_name: "Coleman Swagger Instant Tent",
+                  summary: "This 2 person tent uses an instant design that makes it quick and easy to set up. It’s tough and durable, with a strong frame design, and spring-loaded fiberglass poles for more head room. Perfect for your next trip out.",
                   address: Faker::Address.street_address,
-                  total_occupancy: 3,
+                  total_occupancy: 2,
                   price: 60)
                   file = URI.open("https://www.bcf.com.au/dw/image/v2/BBRV_PRD/on/demandware.static/-/Sites-srg-internal-master-catalog/default/dw4ee965cd/images/599188/BCF_599188_hi-res.jpg?sw=1000&sh=1000&sm=fit&q=80")
                   e.photos.attach(io: file, filename: "tent.png", content_type: "image/jpg")
@@ -135,11 +135,25 @@ g = Gear.create!(user_id: 4,
                 gear_name: "Pryml Raven Fishing Kayak",
                 summary: "If you love to fish Australia's calm tidal estuaries or freshwater streams then an inflatable kayak is the way to do it. The Pryml Raven Fishing Kayak will have you feasting on fish and chips in no time!",
                 address: Faker::Address.street_address,
-                total_occupancy: 4,
+                total_occupancy: 2,
                 price: 100)
                 file = URI.open("https://www.bcf.com.au/dw/image/v2/BBRV_PRD/on/demandware.static/-/Sites-srg-internal-master-catalog/default/dw7717caa9/images/634060/BCF_634060_hi-res.jpg?sw=1000&sh=1000&sm=fit&q=80")
                 g.photos.attach(io: file, filename: "kayak.png", content_type: "image/jpg")
                 g.save
+
+
+7.times do
+  y = Gear.create!(user_id: rand(1..4),
+                   gear_type: %w(Hiking Cooking Sleeping Kayak Shelter Hydration Navigation First-Aid Survival Illumination Repair-Kits).sample,
+                   gear_name: Faker::Vehicle.drive_type,
+                   summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                   address: Faker::Address.street_address,
+                   total_occupancy: rand(1..5),
+                   price: rand(10.0..200.0).round)
+  file = URI.open("https://source.unsplash.com/random?outdoor-gear")
+  y.photos.attach(io: file, filename: "gear.png", content_type: "image/jpg")
+  y.save
+end
 
 # rental for the hiking sticks id 1 by user 4
 Rental.create!(price: a.price,
