@@ -14,13 +14,13 @@
 <br>
 
 <br>
-<div class="container">
+<div class="container mb-3 border-bottom pb-5">
   <div class="row">
     <div class="col">
       <h2 class="text-center">Rentals by me</h2>
       <br>
       <% if @rentals_by_me.empty? %>
-        <h2 class="body-text">Nothing rented so far!</h2>
+        <h4 class="body-text text-center">Nothing rented so far!</h4>
       <% else %>
         <div class="row">
           <%= render "personal_rentals_card", rentals: @rentals_by_me_pc %>
@@ -31,7 +31,7 @@
       <h2 class="text-center">Rentals hosted by me</h2>
       <br>
       <% if @rentals_hosted_by_me.empty? %>
-        <h2 class="body-text">No gears rented out yet!</h2>
+        <h4 class="body-text text-center">No gears rented out yet!</h4>
       <% else %>
         <div class="row">
           <%= render "personal_rentals_card", rentals: @rentals_hosted_by_me %>
