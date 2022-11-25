@@ -8,13 +8,22 @@ class DashboardController < ApplicationController
 
   def my_gear
     @rentals_by_me = Rental.where(user: @user)
-    @rentals_hosted_by_me = Rental.select { |rental| rental.gear.user == current_user }
+    @rentals_by_me_pc = @rentals_by_me.select { |rental| (rental.status == "pending" || rental.status == "confirmed") }
+    @rentals_hosted_by_me = Rental.select { |rental| rental.gear.user == current_user && rental.status }
+    @rentals_completed_as_renter = Rental.where(user: @user, status: "completed")
+    @rentals_completed_as_host = Rental.where(user: @user, status: "completed")
     @gears = Gear.where(user: @user)
 
-    @markers = @gears.geocoded.map do |gear|
+    #1. Gears listed by me, rented by others
+    rentals_v1 = Rental.select { |rental| (rental.gear.user_id == current_user.id && (rental.status == "pending" ||  rental.status == "confirmed")) }
+    rentals_v1_ids = rentals_v1.map { |x| x.gear_id }
+    @map_gears_all = Gear.where(id: rentals_v1.map(&:gear_id))
+    @markers = @map_gears_all.geocoded.map do |gear|
       {
         lat: gear.latitude,
-        lng: gear.longitude
+        lng: gear.longitude,
+        info_window: render_to_string(partial: "info_window", locals: {gear: gear}),
+        image_url: helpers.asset_url("green_marker.png")
       }
     end
   end

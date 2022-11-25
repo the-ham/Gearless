@@ -15,16 +15,16 @@
               </div>
               <div class="col-sm-7">
                 <div class="personal-product-details">
-                  <span class="personal-product-catagory"><%= @gears.first.gear_type %></span>
-                  <h4><%= @gears.first.gear_name %></h4>
-                  <p class="personal-product-summary"><%= @gears.first.summary %></p>
-                  <p>Capacity: <%= @gears.first.total_occupancy %></p>
+                  <span class="personal-product-catagory"><%= gear.gear_type %></span>
+                  <h4><%= gear.gear_name %></h4>
+                  <p class="personal-product-summary"><%= gear.summary %></p>
+                  <p>Capacity: <%= gear.total_occupancy %></p>
                   <div class="personal-product-bottom-details">
-                    <div class="personal-product-price">$<%= @gears.first.price.round %> <small> per night</small></div>
-                    <%= link_to edit_gear_path(@gears.first), class: 'btn btn-light btn-sm border text-right' do %>
+                    <div class="personal-product-price">$<%= gear.price.round %> <small> per night</small></div>
+                    <%= link_to edit_gear_path(gear), class: 'btn btn-light btn-sm border text-right' do %>
                       <i class="fa-regular fa-pen-to-square"></i>
                     <% end %>
-                    <%= link_to gear_path(@gears.first),
+                    <%= link_to gear_path(gear),
                     data: {turbo_method: :delete, turbo_confirm: "Are you sure to delete this gear?"},
                     class: 'btn btn-light btn-sm border text-right' do %>
                       <i class="fa-regular fa-trash-can"></i>

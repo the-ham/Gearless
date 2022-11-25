@@ -27,7 +27,7 @@ export default class extends Controller {
                 console.log();
                 if(selectedDates.length === 2){
                   let timeDiff = Math.abs(selectedDates[1].getDate() - selectedDates[0].getDate());
-                  totalPrice.innerHTML = `${timeDiff * price}`
+                  totalPrice.innerHTML = `${Math.round(timeDiff * price)}`
                 }
             }
             })
