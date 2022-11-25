@@ -1,5 +1,4 @@
 .button-green {
-  margin-top: 50px;
   width: fit-content;
   border: 2px solid $primary-colors-dark;
   padding: 10px 40px;
@@ -9,6 +8,7 @@
   text-decoration: none;
   transition: ease-in-out 0.2s;
   background-color: $primary-color-light;
+  text-align: center;
 }
 
 .button-green:hover {
@@ -18,7 +18,6 @@
 
 
 .button-yellow {
-  margin-top: 50px;
   width: fit-content;
   border: 2px solid #F4F3D8;
   padding: 10px 40px;
